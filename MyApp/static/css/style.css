@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* General Body Styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #282c34;
+    color: #ffffff;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    background-color: rgba(30, 30, 30, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .navbar-brand, .nav-link {
+    color: #FF007F !important;
+    text-shadow: 0 0 20px #FF007F, 0 0 30px #FF007F;
+  }
+  
+  .btn-outline-danger, .btn-outline-primary {
+    border-radius: 25px;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: rgba(255, 0, 127, 0.1);
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: rgba(0, 191, 255, 0.1);
+  }
+  
+  /* Main Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Button Section Styling */
+  .button-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  .button-section button {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 2px solid #FF007F;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .button-section button:hover {
+    background-color: rgba(255, 102, 178, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #00bfff, 0 0 30px #FF007F;
+  }
+  
+  /* Plan Section Styling */
+  .plan-options {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .plans-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .plan {
+    background-color: #2C3E50;
+    border: 2px solid #FF007F;
+    border-radius: 15px;
+    padding: 20px;
+    flex: 1 1 300px;
+    max-width: 300px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+    margin: 0 auto;
+  }
+  
+  .plan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #FF007F;
+  }
+  
+  .plan h2, .plan h4 {
+    margin-bottom: 10px;
+  }
+  
+  .plan ul {
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+  
+  .plan button {
+    background-color: #FF007F;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  .plan button:hover {
+    background-color: #FF66B2;
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #FF66B2;
+  }
+  

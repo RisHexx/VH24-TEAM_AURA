@@ -1,26 +1,28 @@
-from flask import Blueprint , render_template , request , flash , redirect , url_for
-from flask_login import login_required , current_user
+from flask import Blueprint, render_template, request, redirect, url_for
+from flask_login import login_required, current_user
 
-views = Blueprint("views",__name__)
+views = Blueprint("views", __name__)
 
 @views.route("/home")
 @views.route("/")
 def home():
     return "Home Page"
 
-@views.route("/user",methods=['GET','POST'])
+@views.route("/userhome", methods=['GET', 'POST'])
 def userhome():
-    return "User Home Page"
+    if current_user.is_authenticated:
+        return render_template("userHome.html", user=current_user)
+    else:
+        return redirect(url_for('auth.login'))
 
-@views.route("/orders",methods=['GET','POST'])
+@views.route("/orders", methods=['GET', 'POST'])
 def orders():
     return "Orders Page"
 
-@views.route("/leaderboard",methods=['GET','POST'])
+@views.route("/leaderboard", methods=['GET', 'POST'])
 def leaderboard():
     return "Leader Board"
 
-@views.route("/userdata",methods=['GET','POST'])
+@views.route("/userdata", methods=['GET', 'POST'])
 def userdata():
     return "UserData"
-

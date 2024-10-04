@@ -1,25 +1,22 @@
 from . import db
 from datetime import datetime
-class Users(db.Model):
+from flask_login import UserMixin  
+
+class Users(db.Model, UserMixin): 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), nullable=False)
-    email = db.Column(db.String(50), nullable=False)
+    username = db.Column(db.String(20), nullable=False, unique=True)  
+    email = db.Column(db.String(50), nullable=False, unique=True) 
     password = db.Column(db.String(50), nullable=False)
-    score = db.Column(db.Integer, default=0)  # New score column with default value 0
-    orders = db.Column(db.Integer, default=0)  # New score column with default value 0
+    score = db.Column(db.Integer, default=0)  
+    orders = db.Column(db.Integer, default=0)  
 
     def __repr__(self):
         return f'<User {self.username}>'
-    
 
 class Orders(db.Model):
-    id = db.Column(db.Integer, primary_key=True)  # Primary key for Orders
-    order_name = db.Column(db.String(100), nullable=False)  # Name of the order
-    order_time = db.Column(db.DateTime)  # Time when the order was placed
+    id = db.Column(db.Integer, primary_key=True)  
+    order_name = db.Column(db.String(100), nullable=False)  
+    order_time = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f'<Order {self.order_name}>'
-
-
-
-
