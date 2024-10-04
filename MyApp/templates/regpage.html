@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #282c34; /* Dark Background for Contrast */
+            background-image: url('path-to-your-background-image'); /* Optional background image */
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            width: 900px;
+            height: 500px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Darker shadow for a more dramatic effect */
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.2); /* Subtle border */
+        }
+
+        /* Left Side (Logo Area) */
+        .logo-section {
+            flex: 1;
+            background: linear-gradient(135deg, #FF007F, #FF66B2); /* Neon Pink Gradient Background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('path-to-your-image') no-repeat center;
+            background-size: cover;
+            opacity: 0.1; /* Subtle background overlay */
+        }
+
+        .logo-box {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white for logo box */
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* More blur for depth */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Added shadow for elevation */
+        }
+
+        .logo-box h1 {
+            color: #ffffff; /* Text Color (Headers) */
+            font-size: 2.5rem; /* Larger font size */
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase; /* Uppercase for impact */
+        }
+
+        .logo-box p {
+            color: #ffffff; /* Text Color (Headers) */
+            font-size: 1.5rem; /* Larger font size */
+            font-weight: 300; /* Lighter font weight */
+        }
+
+        /* Right Side (Form Area) */
+        .form-section {
+            flex: 1;
+            background-color: #2C3E50; /* Form Background */
+            padding: 50px 40px;
+            max-height: 100%; /* Set the maximum height */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .form-section h2 {
+            color: #FF66B2; /* Neon Pink for Headers */
+            font-size: 2rem; /* Larger font size */
+            margin-bottom: 20px;
+            font-weight: 500; /* Medium font weight */
+        }
+
+        .form-section p {
+            color: #FF007F; /* Neon Pink for Paragraphs */
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #BDC3C7; /* Terms Text Color */
+            font-size: 0.9rem; /* Slightly larger font size */
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #34495E; /* Input Background */
+            color: #ffffff; /* White */
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        .form-group input::placeholder {
+            color: #BDC3C7; /* Input Placeholder Text */
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border: 2px solid #FF007F; /* Neon Pink Border on Focus */
+            background-color: #3A4A60; /* Darker slate on focus */
+        }
+
+        .submit-btn {
+            background-color: #FF007F; /* Neon Pink Button Background */
+            color: #ffffff;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        .submit-btn:hover {
+            background-color: #FF66B2; /* Lighter Neon Pink on Hover */
+        }
+
+        .terms {
+            color: #BDC3C7; /* Terms Text Color */
+            font-size: 0.75rem;
+            margin-top: 20px;
+        }
+
+        .terms a {
+            color: #FF007F; /* Neon Pink Link Color */
+            text-decoration: none;
+            font-weight: bold; /* Bold for emphasis */
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side: Logo Section -->
+        <div class="logo-section">
+            <div class="logo-box">
+                <h1>TrainD</h1>
+                
+            </div>
+        </div>
+
+        <!-- Right Side: Form Section -->
+        <div class="form-section">
+            <h2>Register</h2>
+            <p>It's completely free</p>
+
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Username">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Email address">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm password">
+                </div>
+
+                <button type="submit" class="submit-btn">Create Account</button>
+
+               
+            </form>
+        </div>
+    </div>
+</body>
+</html>

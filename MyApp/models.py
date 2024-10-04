@@ -12,7 +12,6 @@ class Users(db.Model):
         return f'<User {self.username}>'
     
 
-
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Primary key for Orders
     order_name = db.Column(db.String(100), nullable=False)  # Name of the order
