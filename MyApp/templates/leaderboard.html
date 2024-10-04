@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #282c34; /* Dark background for neon contrast */
+            color: #ffffff; /* Default text color */
+        }
+
+        .leaderboard-container {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #2C3E50; /* Darker background for the leaderboard */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Neon Glow Effect */
+        .neon {
+            text-shadow: 0 0 5px #ff007f, 0 0 10px #ff007f, 0 0 20px #FF66B2; /* Neon Pink and Lighter Pink */
+        }
+
+        .leaderboard-title {
+            text-align: center; 
+            margin-bottom: 20px;
+            font-size: 3rem; 
+            color: #ffffff; /* White text with neon shadow */
+        }
+
+        .user-rank {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(255, 20, 147, 0.2); /* Transparent Neon Pink background */
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ff007f; /* Neon Pink */
+            color: #ff007f; /* Neon Pink text */
+        }
+
+        .btn-more, .btn-home {
+            margin: 5px;
+            background-color: #FF007F; /* Neon Pink */
+            color: #ffffff; /* White text */
+            border: 2px solid #ff007f; /* Neon Pink */
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-more:hover, .btn-home:hover {
+            background-color: #FF66B2; /* Lighter Neon Pink */
+            color: #282c34; /* Dark background on hover */
+            box-shadow: 0 0 10px #ff007f, 0 0 20px #00ff00; /* Neon Pink and Green */
+        }
+
+        /* Leaderboard Table */
+        .leaderboard-table th {
+            background-color: #1f4037; /* Darker background */
+            color: #ff007f; /* Neon Pink */
+            border: 2px solid #ff007f; /* Neon Pink border */
+        }
+
+        .leaderboard-table td {
+            border: 2px solid #ff007f; /* Neon Pink border */
+            color: #ffffff; /* White text */
+            transition: background-color 0.3s;
+        }
+
+        .leaderboard-table tr:hover {
+            background-color: rgba(0, 255, 234, 0.1); /* Neon Blue hover effect */
+        }
+
+        /* Additional sections */
+        .challenges {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(0, 255, 234, 0.1); /* Neon Blue background */
+            border-radius: 10px;
+            color: #00ffff; /* Neon Blue text */
+        }
+
+        /* Input styles */
+        input {
+            background-color: #34495E; /* Input background */
+            color: #ffffff; /* Input text color */
+            border: 2px solid #BDC3C7; /* Default border color */
+            border-radius: 8px;
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #FF007F; /* Neon Pink border on focus */
+            background-color: #3A4A60; /* Darker Slate on focus */
+            outline: none;
+        }
+
+        /* Placeholder color */
+        input::placeholder {
+            color: #BDC3C7; /* Placeholder color */
+        }
+
+        /* Link styles */
+        a {
+            color: #FF007F; /* Link color */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="leaderboard-container">
+            <h2 class="leaderboard-title neon">Leaderboard</h2>
+            <div class="user-rank neon">
+                Your Rank: <strong>3</strong>
+            </div>
+            <table class="table leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alice</td>
+                        <td>1500</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Bob</td>
+                        <td>1200</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Charlie</td>
+                        <td>1100</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>David</td>
+                        <td>900</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Eve</td>
+                        <td>800</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="challenges neon">
+                <h4>Weekly Challenges</h4>
+                <ul>
+                    <li>✅ Complete 5 games</li>
+                    <li>✅ Achieve a score of 1000</li>
+                    <li>🔄 Invite a friend</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

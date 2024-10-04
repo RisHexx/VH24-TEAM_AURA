@@ -173,8 +173,8 @@
         </ul>
         <div class="d-flex ms-auto">
           <a class="btn btn-outline-danger me-3" href="{{ url_for('auth.logout') }}">Sign out</a>
-          <button class="btn btn-outline-primary me-3" type="button">Score</button>
-          <a href="leaderboard.html" class="btn btn-outline-danger" role="button">Leader Board</a>
+          <a class="btn btn-outline-danger me-3" >Score</a>
+          <a href="{{ url_for('views.leaderboard') }}" class="btn btn-outline-danger" role="button">Leader Board</a>
         </div>
       </div>
     </div>

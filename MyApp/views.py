@@ -9,6 +9,7 @@ def home():
     return "Home Page"
 
 @views.route("/userhome", methods=['GET', 'POST'])
+@login_required
 def userhome():
     if current_user.is_authenticated:
         return render_template("userHome.html", user=current_user)
@@ -21,7 +22,7 @@ def orders():
 
 @views.route("/leaderboard", methods=['GET', 'POST'])
 def leaderboard():
-    return "Leader Board"
+    return render_template("leaderboard.html")
 
 @views.route("/userdata", methods=['GET', 'POST'])
 def userdata():
