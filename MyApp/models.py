@@ -1,5 +1,5 @@
 from . import db
-
+from datetime import datetime
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False)
@@ -11,7 +11,7 @@ class Users(db.Model):
     def __repr__(self):
         return f'<User {self.username}>'
     
-from datetime import datetime
+
 
 class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # Primary key for Orders
