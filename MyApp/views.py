@@ -9,7 +9,7 @@ views = Blueprint("views", __name__)
 @views.route("/home")
 @views.route("/")
 def home():
-    return "Home Page"
+    return "hii"
 
 @views.route("/userhome", methods=['GET', 'POST'])
 @login_required
@@ -138,3 +138,42 @@ def complete_challenge(challenge_type):
 @views.route('/reward')
 def reward():
     return render_template('reward.html')
+
+
+
+import matplotlib.pyplot as plt
+import io
+import base64
+from flask import render_template, url_for
+
+@views.route('/graph')
+@login_required
+def graph_page():
+    # Get the current user
+    user = current_user
+
+    # Get the completed orders count for the current user
+    completed_orders_count = Orders.query.filter_by(user_id=user.id, order_status='Completed').count()
+
+    # Prepare data for the pie chart
+    labels = ['Completed Orders', 'Score']
+    sizes = [completed_orders_count, user.score]
+    colors = ['blue', 'orange']
+    
+    # Create a pie chart
+    plt.figure(figsize=(10, 10))
+    plt.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=140)
+    plt.title(f'{user.username}\'s Completed Orders vs Score')
+
+    # Save the pie chart to a buffer
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    graph_url = base64.b64encode(img.getvalue()).decode()
+
+    # Pass the graph URL to the template
+    return render_template('graph.html', graph_url=f'data:image/png;base64,{graph_url}')
+
+@views.route("/map")
+def maps():
+    return render_template("mapp.html")
