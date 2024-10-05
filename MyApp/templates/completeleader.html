@@ -58,15 +58,16 @@
             background-color: rgba(0, 255, 234, 0.1); /* Neon Blue hover effect */
         }
 
-        .btn-show-more {
-            margin-top: 20px; /* Spacing above the button */
+        .btn-show-all {
+            margin-top: 20px;
             background-color: #ff007f; /* Neon Pink */
             color: #ffffff; /* White text */
         }
 
-        .btn-show-more:hover {
+        .btn-show-all:hover {
             background-color: #FF66B2; /* Lighter Neon Pink on hover */
         }
+
     </style>
 </head>
 <body>
@@ -94,9 +95,9 @@
                     {% endfor %}
                 </tbody>
             </table>
-
-            <!-- Button to show more users -->
-            <a href="{{ url_for('views.leaderboardall') }}" class="btn btn-show-more">Show More</a>
+            {% if not show_all %}
+                <a href="{{ url_for('views.leaderboard', show_all=1) }}" class="btn btn-show-all">Show All Users</a>
+            {% endif %}
         </div>
     </div>
 

@@ -23,6 +23,12 @@
       font-size: 2.5em;
       text-shadow: 0 0 20px #FF007F, 0 0 30px #FF007F, 0 0 40px #FF007F; /* Neon pink glow */
     }
+    h2 {
+      color: #FF007F; /* Pink for main header */
+      margin-bottom: 20px;
+      font-size: 2em;
+      text-shadow: 0 0 20px #FF007F, 0 0 30px #FF007F, 0 0 40px #FF007F; /* Neon pink glow */
+    }
 
     .button-section {
       margin-bottom: 40px;
@@ -56,8 +62,8 @@
 
     .plans-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 40px;
     }
 
     .plan {
@@ -161,7 +167,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">{{user.username}}</a>
+      <a class="navbar-brand" href="#" style="text-decoration: none;">{{ user.username | upper }}</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -173,7 +179,7 @@
         </ul>
         <div class="d-flex ms-auto">
           <a class="btn btn-outline-danger me-3" href="{{ url_for('auth.logout') }}">Sign out</a>
-          <a class="btn btn-outline-danger me-3" >Score</a>
+          <a class="btn btn-outline-danger me-3" href="{{ url_for('views.score_page') }}">Score</a>
           <a href="{{ url_for('views.leaderboard') }}" class="btn btn-outline-danger" role="button">Leader Board</a>
         </div>
       </div>
@@ -182,46 +188,45 @@
 
   <!-- Original buttons restored -->
   <div class="button-section">
-    <a href="order.html"><button>Orders</button></a>
-    <button>Your Rewards</button>
-    <button>History</button>
-    <a href="challenge.html"><button>Challenge</button></a> <!-- New Challenge button added -->
+    <a href="{{ url_for('views.orders') }}"><button>Orders</button></a>
+    <a href="{{ url_for('views.reward') }}"><button>Rewards</button></a>
+    <a href="{{url_for('views.delivery_challenge')}}"><button>Challenge</button></a> <!-- New Challenge button added -->
   </div>
 
   <div class="plan-options">
-    <h1>Targets</h1>
-    <div class="plans-container">
+    <h2>TARGETS</h2>
+    <BR></BR>
+    <div class="plans-container ">
       <div class="plan">
-        <h2>Daily</h2>
-        <p>Daily Challenges</p>
+        <h2></h2>
+        <p>Daily Challenge</p>
         <ul>
-          <h4>Challenge</h4>
+         <center>
+          <h6>Complete 5 Delivery</h6>
+         </center>
         </ul>
-        <button>Apply Challenge</button>
+        <a href="{{url_for('views.delivery_challenge')}}"><button>Collect Score</button></a>
       </div>
       <div class="plan">
-        <h2>Weekly</h2>
-        <p>Weekly Challenges</p>
-        <ul>
-          <h4>Challenge</h4>
-        </ul>
-        <button>Apply Challenge</button>
+        <h2></h2>
+        <p>Weekly Challenge</p>
+        <center>
+          <h6>Complete 25 Delivery</h6>
+         </center>
+         <a href="{{url_for('views.delivery_challenge')}}"><button>Collect Score</button></a>
+
+
+
       </div>
       <div class="plan">
-        <h2>Monthly</h2>
+        <h2></h2>
         <p>Monthly Challenge</p>
-        <ul>
-          <h4>Challenge</h4>
-        </ul>
-        <button>Apply Challenge</button>
-      </div>
-      <div class="plan">
-        <h2>Yearly</h2>
-        <p>Yearly Challenge</p>
-        <ul>
-          <h4>Challenge</h4>
-        </ul>
-        <button>Apply Challenge</button>
+        <center>
+          <h6>Complete 120 Delivery</h6>
+         </center>
+         <a href="{{url_for('views.delivery_challenge')}}"><button>Collect Score</button></a>
+
+
       </div>
     </div>
   </div>

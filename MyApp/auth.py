@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from flask_login import login_user
+from flask_login import login_user , logout_user
 from . import db
 from .models import Users
 
@@ -48,4 +48,6 @@ def signup():
 
 @auth.route("/logout")
 def logout():
-    return "You have been logged out"
+    logout_user()
+    return redirect(url_for('auth.login'))  
+    

@@ -1,0 +1,202 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #282c34; /* Dark background */
+            color: #ffffff; /* Default text color */
+        }
+
+        .score-container {
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #2C3E50; /* Form background */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Neon Glow Effect */
+        .neon {
+            text-shadow: 0 0 5px #FF007F, 0 0 10px #00ff00, 0 0 20px #00ffff; /* Neon Pink, Green, Blue */
+        }
+
+        .score-title {
+            text-align: center; 
+            margin-bottom: 20px;
+            font-size: 2.5rem; 
+            color: #FF007F; /* Neon Pink title color */
+        }
+
+        .score-details {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(255, 20, 147, 0.2); /* Transparent Neon Pink background */
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #FF007F; /* Neon Pink */
+        }
+
+        .btn-home {
+            background-color: transparent;
+            color: #FF007F; /* Neon Pink */
+            border: 2px solid #FF007F; /* Neon Pink */
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            display: block;
+            margin: 20px auto 0; /* Center the button */
+            text-align: center;
+            text-decoration: none; /* Remove underline for anchor */
+        }
+
+        .btn-home:hover {
+            background-color: #FF66B2; /* Lighter Neon Pink on hover */
+            color: #101820; /* Dark background on hover */
+            box-shadow: 0 0 10px #FF007F, 0 0 20px #00ff00, 0 0 30px #00ffff; /* Neon Pink, Green, Blue */
+        }
+
+        /* Score Information */
+        .info {
+            font-size: 1.5rem;
+            color: #00ffff; /* Neon Blue */
+        }
+
+        /* Terms Text Color */
+        .terms {
+            color: #BDC3C7; /* Terms text color */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Link Color */
+        .link {
+            color: #FF007F; /* Neon Pink link color */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="score-container">
+            <h2 class="score-title neon">Your Score</h2>
+            <div class="score-details neon">
+                <p class="info">Username: <strong>{{ username }}</strong></p>
+                <p class="info">Rank: <strong>{{ rank }}</strong></p>
+                <p class="info">Score: <strong>{{ score }}</strong></p>
+            </div>
+            <a href="{{ url_for('views.userhome') }}" class="btn-home neon">Home</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #282c34; /* Dark background */
+            color: #ffffff; /* Default text color */
+        }
+
+        .score-container {
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: #2C3E50; /* Form background */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for container */
+        }
+
+        .score-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #FF007F; /* Neon Pink title color */
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #FF007F; /* Neon Pink border */
+            background-color: #34495E; /* Input background */
+            color: #ffffff; /* Input text color */
+        }
+
+        th {
+            background-color: #FF007F; /* Neon Pink for table header */
+            color: #ffffff;
+        }
+
+
+        .btn-home {
+            background-color: transparent;
+            color: #FF007F; /* Neon Pink */
+            border: 2px solid #FF007F; /* Neon Pink */
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            display: block;
+            margin: 20px auto 0; /* Center the button */
+            text-align: center;
+            text-decoration: none; /* Remove underline for anchor */
+        }
+
+        .btn-home:hover {
+            background-color: #FF66B2; /* Lighter Neon Pink on hover */
+            color: #101820; /* Dark background on hover */
+            box-shadow: 0 0 8px #FF007F, 0 0 12px #00ff00, 0 0 15px #00ffff; /* Softer Neon Pink, Green, Blue */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="score-container">
+            <h2 class="score-title">Your Score</h2> <!-- Removed neon class -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Rank</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ username }}</td>
+                        <td>{{ rank }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="{{ url_for('views.userhome') }}" class="btn-home">Home</a> <!-- Removed neon class -->
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

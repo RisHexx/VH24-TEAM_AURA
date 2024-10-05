@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Challenges</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            background-color: #282c34; /* Darker Slate */
+            color: #ffffff;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #FF007F, #FF66B2);
+            box-shadow: 0 0 10px #FF007F; /* Neon Pink Glow */
+        }
+
+        .container {
+            margin-top: 50px;
+            background: linear-gradient(135deg, #FF007F, #FF66B2);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #FF007F; /* Neon Pink Border */
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        /* Challenge Cards */
+        .challenge-card {
+            background-color: #34495E; /* Input Background */
+            border-radius: 15px;
+            box-shadow: 0 0 20px #FF66B2; /* Neon Pink Glow */
+            margin-bottom: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s;
+            color: #ffffff;
+        }
+
+        .challenge-card:hover {
+            transform: scale(1.05);
+        }
+
+        .challenge-title {
+            color: #FF007F; /* Neon Pink */
+            font-size: 1.5rem;
+        }
+
+        .challenge-points {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .btn-complete {
+            background-color: #FF007F; /* Neon Pink */
+            border: none;
+            color: #ffffff; /* Button Text Color */
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+            text-align: center;
+        }
+
+        .btn-complete:hover {
+            background-color: #FF66B2; /* Lighter Neon Pink on Hover */
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-dark">
+        <!-- Left: Current User Name -->
+        <a class="navbar-brand" href="#">{{ current_user.username | upper }}</a>
+        <!-- Right: Current User Score -->
+        <button class="btn btn-tutorial" id="user-score-btn">Score: {{ current_user.score }}</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 id="welcome-section">Welcome to the Delivery Challenge</h1>
+        <p id="description-section">Complete the challenges below to earn points and improve your delivery skills!</p>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Challenges Section -->
+        <div id="challenge-section">
+      <!-- Inside your challenge.html file -->
+<div class="challenge-card" id="daily-challenge">
+    <h2 class="challenge-title">Daily: Complete 5 Deliveries</h2>
+    <p class="challenge-points">Points: 100</p>
+    <form action="{{ url_for('views.complete_challenge', challenge_type='daily') }}" method="POST">
+        <button type="submit" class="btn-complete">Complete</button>
+    </form>
+</div>
+
+<div class="challenge-card" id="weekly-challenge">
+    <h2 class="challenge-title">Weekly: Complete 25 Deliveries</h2>
+    <p class="challenge-points">Points: 250</p>
+    <form action="{{ url_for('views.complete_challenge', challenge_type='weekly') }}" method="POST">
+        <button type="submit" class="btn-complete">Complete</button>
+    </form>
+</div>
+
+<div class="challenge-card" id="monthly-challenge">
+    <h2 class="challenge-title">Monthly: Complete 120 Deliveries</h2>
+    <p class="challenge-points">Points: 500</p>
+    <form action="{{ url_for('views.complete_challenge', challenge_type='monthly') }}" method="POST">
+        <button type="submit" class="btn-complete">Complete</button>
+    </form>
+</div>
+
+    </div>
+
+    <!-- Bootstrap & jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

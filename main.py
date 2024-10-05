@@ -1,9 +1,8 @@
 from MyApp import createapp, db
-
 app = createapp()
 
 # with app.app_context():
-#     # Create all database tables
+# #    Create all database tables
 #     db.create_all()
 
 

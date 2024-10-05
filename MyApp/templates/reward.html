@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Grid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #ffffff;
+      text-align: center;
+      overflow: hidden; /* Prevent overflow */
+      position: relative; /* For absolute positioning of animation */
+      background: linear-gradient(180deg, #FF007F, #FF66B2); /* Neon Pink Gradient Background */
+    }
+
+    /* Background Animation */
+    .background-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0; /* Send to back */
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 20%, transparent 20%) center/20% 20%;
+      animation: animate-background 10s linear infinite; /* Infinite animation */
+    }
+
+    @keyframes animate-background {
+      0% {
+        background-position: 0% 0%;
+      }
+      100% {
+        background-position: 100% 100%;
+      }
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2.8em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      position: relative; /* To layer over the animation */
+      z-index: 1; /* Bring to front */
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+      background-color: rgba(44, 62, 80, 0.9); /* Form Background with slight transparency */
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      position: relative; /* Layer over the background animation */
+      z-index: 1; /* Bring to front */
+    }
+
+    .grid-item {
+      background-color: #34495E; /* Input Background */
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 1.5em;
+      color: #ffffff;
+      transition: transform 0.4s ease, background-color 0.4s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .grid-item:hover {
+      background-color: #FF66B2; /* Lighter Neon Pink on Hover */
+      transform: translateY(-5px);
+    }
+
+    .grid-item.selected {
+      background-color: #FF007F; /* Button Background for selected items */
+      transform: translateY(-10px) rotate(2deg);
+      font-size: 1.6em;
+      transition: transform 0.4s ease, background-color 0.4s ease, font-size 0.4s ease;
+    }
+
+    .grid-item.selected::before {
+      content: 'Reward';
+      display: block;
+      font-size: 1em;
+      margin-bottom: 5px;
+      color: #ffffff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .points-display {
+      margin-top: 20px;
+      font-size: 1.8em;
+      color: #FF66B2; /* Lighter Neon Pink */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .home-button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #FF007F; /* Button Background */
+      color: #ffffff; /* Button Text Color */
+      border: none;
+      border-radius: 5px;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .home-button:hover {
+      background-color: #FF66B2; /* Lighter Neon Pink on Hover */
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #BDC3C7; /* Terms Text Color */
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="background-animation"></div>
+  
+  <h1>Collect Your Rewards</h1>
+  
+  <div class="grid-container">
+    <div class="grid-item" data-ticket="Ticket 1" data-points="10">REWARD</div>
+    <div class="grid-item" data-ticket="Ticket 2" data-points="50">REWARD</div>
+    <div class="grid-item" data-ticket="Ticket 3" data-points="100">REWARD</div>
+    <div class="grid-item" data-ticket="Ticket 4" data-points="150">REWARD</div>
+    <div class="grid-item" data-ticket="Ticket 5" data-points="200">REWARD</div>
+    <div class="grid-item" data-ticket="Ticket 6" data-points="75">REWARD</div>
+  </div>
+
+  <div class="points-display" id="pointsDisplay" style="display: none;">Selected Points: 0</div>
+
+
+  <script>
+    const gridItems = document.querySelectorAll('.grid-item');
+    const pointsDisplay = document.getElementById('pointsDisplay');
+    let selectedPoints = 0;
+    let selectionLocked = false; // Flag to indicate selection status
+
+    gridItems.forEach(item => {
+      item.addEventListener('click', () => {
+        if (!selectionLocked) { // Allow selection only if not locked
+          // Deselect currently selected item if any
+          const currentlySelected = document.querySelector('.grid-item.selected');
+          if (currentlySelected) {
+            currentlySelected.classList.remove('selected');
+            selectedPoints = 0; // Reset points
+          }
+
+          // Mark the clicked item as selected and animate
+          item.classList.add('selected');
+
+          // Get the points from the selected item
+          const points = item.getAttribute('data-points');
+          selectedPoints = parseInt(points, 10); // Convert to integer
+
+         
+          // Lock the selection
+          selectionLocked = true;
+        }
+      });
+    });
+
+    function goHome() {
+      window.location.href = 'your-homepage-url.html'; // Replace with your actual homepage URL
+    }
+  </script>
+</body>
+</html>
