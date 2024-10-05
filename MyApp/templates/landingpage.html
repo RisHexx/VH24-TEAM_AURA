@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        /* styles for the landing page */
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            display: flex;              /* Use flexbox for centering */
+            justify-content: center;    /* Center horizontally */
+            align-items: center;        /* Center vertically */
+            height: 100vh;             /* Full viewport height */
+            background: linear-gradient(180deg, #FF007F, #FF66B2); /* Neon pink gradient background */
+            position: relative;         /* Position relative for absolute elements */
+        }
+
+        header {
+            background-color: #282c34; /* Dark background */
+            color: white;
+            padding: 40px 0;           /* Increased top and bottom padding for more height */
+            text-align: center;         /* Center text in header */
+            border-radius: 8px;        /* Optional: rounded corners */
+            z-index: 1;                /* Ensure it stays on top */
+            width: 100%;                /* Full width */
+            max-width: 800px;          /* Optional: maximum width */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .btn {
+            background-color: #FF007F; /* Button background color */
+            color: #ffffff;             /* Button text color */
+            padding: 12px 24px;        /* Increased button padding for larger size */
+            border-radius: 5px;        /* Rounded corners */
+            margin-left: 10px;
+            border: none;               /* No border */
+            cursor: pointer;            /* Pointer cursor */
+            position: relative;         /* Position relative for animation effects */
+            overflow: hidden;           /* Clip overflow */
+            transition: color 0.3s ease; /* Smooth transition for text color */
+            z-index: 1;                /* Ensure button stays on top */
+            font-size: 1.2em;          /* Increased font size */
+        }
+
+        .btn::after {
+            content: "";                /* Create a pseudo-element for animation */
+            position: absolute;         /* Position absolute to cover the button */
+            left: 50%;                  /* Center it */
+            top: 50%;                   /* Center it */
+            width: 300%;                /* Size for the animation effect */
+            height: 300%;               /* Size for the animation effect */
+            background: rgba(255, 0, 127, 0.5); /* Semi-transparent background */
+            border-radius: 50%;         /* Initial rounded effect */
+            transform: translate(-50%, -50%) scale(0); /* Start scaled down */
+            transition: transform 0.5s ease; /* Transition for scaling effect */
+            z-index: 0;                /* Behind the button text */
+        }
+
+        .btn:hover {
+            background-color: #FF66B2; /* Lighter pink on hover */
+            color: #282c34;             /* Change text color to dark */
+            box-shadow: 0 0 10px #FF007F, 0 0 20px #FF66B2; /* Glowing effect */
+            transform: translateY(-3px); /* Slight upward movement */
+        }
+
+        .btn:active {
+            border-radius: 50%;         /* Make button oval on click */
+            transform: scale(1);        /* Reset scale */
+        }
+
+        .btn:active::after {
+            border-radius: 50%;         /* Keep pseudo-element oval */
+            transform: translate(-50%, -50%) scale(1); /* Keep scaling effect */
+        }
+
+        nav a:hover {
+            color: #ffffff; /* Ensure text color remains white on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>WELCOME</h1>
+            <ul>
+                <li><a href="{{url_for('auth.login')}}" class="btn">Login</a></li>
+                <li><a href="{{url_for('auth.signup')}}" class="btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

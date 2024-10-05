@@ -9,7 +9,7 @@ views = Blueprint("views", __name__)
 @views.route("/home")
 @views.route("/")
 def home():
-    return "hii"
+    return render_template('landingpage.html')
 
 @views.route("/userhome", methods=['GET', 'POST'])
 @login_required
@@ -19,11 +19,15 @@ def userhome():
     else:
         return redirect(url_for('auth.login'))
 
+
 @views.route("/order", methods=['GET', 'POST'])
 @login_required
 def orders():
-    orders_list = Orders.query.all()  # Fetch all orders from the database
-    return render_template("order.html", orders=orders_list)  # Pass orders to the template
+    # Fetch orders for the currently logged-in user
+    orders_list = Orders.query.filter_by(user_id=current_user.id).all()
+    
+    return render_template("order.html", orders=orders_list)
+
 
 
 @views.route("/userdata", methods=['GET', 'POST'])
